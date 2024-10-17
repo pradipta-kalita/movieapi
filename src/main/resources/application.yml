@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/movies
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+
+cloudinary:
+  cloud-name: dfths157i
+  api-key: 311619478275982
+  api-secret: eZ-kOf7Xd1z5O7Jtb2x7PsH5yok
