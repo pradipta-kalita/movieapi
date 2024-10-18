@@ -6,4 +6,5 @@ import java.io.IOException;
 
 public interface CloudinaryService {
     String uploadFile(MultipartFile file, String folderName, String fileName) throws IOException;
+    void deleteFile(String publicId) throws IOException;
 }

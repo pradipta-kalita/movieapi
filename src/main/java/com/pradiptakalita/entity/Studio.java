@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
@@ -27,7 +28,12 @@ public class Studio {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    private String studioProfileUrl;
     // One-to-Many relation with Movie Entity
     @OneToMany(mappedBy = "studio",cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private Set<Movie> movies = new HashSet<>();
+
+    public String getPublicId(){
+        return name.toLowerCase(Locale.ROOT).strip().replace(" ","");
+    }
 }

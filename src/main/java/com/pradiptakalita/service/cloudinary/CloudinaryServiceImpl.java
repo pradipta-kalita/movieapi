@@ -23,8 +23,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 
     @Override
     public String uploadFile(MultipartFile file, String folderName, String fileName) throws IOException {
-        System.out.println("YES CAME HERE, upload method");
-
         Map<String, Object> options = new HashMap<>();
         options.put("public_id", fileName);
         options.put("folder", folderName);
@@ -40,5 +38,19 @@ public class CloudinaryServiceImpl implements CloudinaryService {
         Map uploadResult = cloudinary.uploader().upload(file.getBytes(), options);
         return uploadResult.get("url").toString();
     }
+
+    @Override
+    public void deleteFile(String publicId) throws IOException {
+        // Destroy (delete) the image by its public ID
+        Map result = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+        System.out.println(result.get("result"));
+        if ("ok".equals(result.get("result"))) {
+            System.out.println("File deleted successfully");
+        } else {
+            System.out.println("File deletion failed: "+publicId);
+        }
+    }
+
+
 
 }
