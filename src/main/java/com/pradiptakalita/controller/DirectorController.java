@@ -43,7 +43,7 @@ public class DirectorController {
             return ResponseEntity.status(HttpStatus.CREATED).body(createdDirector);
     }
 
-    @PostMapping(value = "/{directorId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "/{directorId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<DirectorResponseDTO> updateDirector(@ModelAttribute @Valid DirectorRequestDTO directorRequestDTO, @PathVariable UUID directorId){
         DirectorResponseDTO directorResponseDTO = directorService.updateDirector(directorRequestDTO,directorId);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(directorResponseDTO);
@@ -54,5 +54,9 @@ public class DirectorController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(directorService.getDirectorById(id));
     }
 
-
+    @DeleteMapping("/{directorId}")
+    public ResponseEntity<String> deleteDirectorById(@PathVariable UUID directorId){
+        directorService.deleteDirectorById(directorId);
+        return ResponseEntity.ok().body("Director successfully deleted");
+    }
 }

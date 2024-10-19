@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public interface CloudinaryService {
-    String uploadFile(MultipartFile file, String folderName, String fileName) throws IOException;
-    void deleteFile(String publicId) throws IOException;
+    String uploadFileToCloudinary(MultipartFile file, String folderName, String fileName) throws IOException;
+    void deleteFileFromCloudinary(String publicId) throws IOException;
+    String uploadFile(MultipartFile file,String folderName, String publicId,String defaultURL);
+    void deleteFile(String publicId);
 }

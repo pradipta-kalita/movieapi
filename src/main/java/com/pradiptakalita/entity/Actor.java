@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public class Actor {
     private String name;
 
     @NotBlank(message = "Please write something about the actor/actress.")
-    @Size(min = 500,max = 65535, message = "Mini biography must be between 500 and 65535 characters.")
+    @Size(min = 10,max = 65535, message = "Mini biography must be between 500 and 65535 characters.")
     @Column(columnDefinition = "TEXT",name = "mini_biography")
     private String miniBiography;
 
@@ -41,4 +42,8 @@ public class Actor {
 
     @ManyToMany(mappedBy = "actors")
     private Set<Movie> movies= new HashSet<>();
+
+    public String getPublicId(){
+        return name.replace(" ","").toLowerCase(Locale.ROOT).strip();
+    }
 }

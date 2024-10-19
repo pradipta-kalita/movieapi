@@ -10,6 +10,7 @@ import org.hibernate.engine.internal.Cascade;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
@@ -44,4 +45,8 @@ public class Director {
     // Many-to-Many relation with Movie Entity
     @ManyToMany(mappedBy = "directors")
     private Set<Movie> movies = new HashSet<>();
+
+    public String getPublicId(){
+        return name.toLowerCase(Locale.ROOT).strip().replace(" ","");
+    }
 }

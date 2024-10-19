@@ -22,7 +22,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     }
 
     @Override
-    public String uploadFile(MultipartFile file, String folderName, String fileName) throws IOException {
+    public String uploadFileToCloudinary(MultipartFile file, String folderName, String fileName) throws IOException {
         Map<String, Object> options = new HashMap<>();
         options.put("public_id", fileName);
         options.put("folder", folderName);
@@ -40,7 +40,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     }
 
     @Override
-    public void deleteFile(String publicId) throws IOException {
+    public void deleteFileFromCloudinary(String publicId) throws IOException {
         // Destroy (delete) the image by its public ID
         Map result = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
         System.out.println(result.get("result"));
@@ -51,6 +51,24 @@ public class CloudinaryServiceImpl implements CloudinaryService {
         }
     }
 
+    @Override
+    public String uploadFile(MultipartFile file,String folderName, String publicId,String defaultURL) {
+        if(file!=null){
+            try{
+                return uploadFileToCloudinary(file,folderName,publicId);
+            }catch (IOException e){
+                System.out.println("Problem in uploading studio picture on createStudio method");
+            }
+        }
+        return defaultURL;
+    }
 
-
+    @Override
+    public void deleteFile(String publicId){
+        try {
+            deleteFileFromCloudinary(publicId);
+        }catch (IOException e){
+            System.out.println("Problem in uploading studio picture on createStudio method");
+        }
+    }
 }

@@ -7,9 +7,7 @@ import com.pradiptakalita.mapper.StudioMapper;
 import com.pradiptakalita.repository.StudioRepository;
 import com.pradiptakalita.service.cloudinary.CloudinaryService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -53,7 +51,7 @@ public class StudioServiceImpl implements StudioService{
     @Override
     public StudioResponseDTO createStudio(StudioRequestDTO studioRequestDTO) {
         Studio studio = StudioMapper.toEntity(studioRequestDTO);
-        String studioPictureUrl=uploadFile(studioRequestDTO.getFile(),studioRequestDTO.getPublicId());
+        String studioPictureUrl=cloudinaryService.uploadFile(studioRequestDTO.getFile(),getDefaultFolderName(),studioRequestDTO.getPublicId(),getDefaultPictureUrl());
         studio.setStudioProfileUrl(studioPictureUrl);
         Studio savedStudio = studioRepository.save(studio);
         return StudioMapper.studioResponseDTO(savedStudio);
@@ -65,8 +63,8 @@ public class StudioServiceImpl implements StudioService{
         studio.setDescription(studioRequestDTO.getDescription());
         String studioPictureUrl = studio.getStudioProfileUrl();
         if(studioRequestDTO.getFile()!=null){
-            deleteFile(studio.getPublicId());
-            studioPictureUrl =  uploadFile(studioRequestDTO.getFile(),studioRequestDTO.getPublicId());
+            cloudinaryService.deleteFile(studio.getPublicId());
+            studioPictureUrl =cloudinaryService.uploadFile(studioRequestDTO.getFile(),getDefaultFolderName(),studioRequestDTO.getPublicId(),studioPictureUrl);
         }
         studio.setName(studioRequestDTO.getName());
         studio.setStudioProfileUrl(studioPictureUrl);
@@ -77,29 +75,7 @@ public class StudioServiceImpl implements StudioService{
     @Override
     public void deleteStudioById(UUID id) {
         Studio studio = studioRepository.findById(id).orElseThrow(()->new RuntimeException("Studio not found."));
+        cloudinaryService.deleteFile(studio.getPublicId());
         studioRepository.deleteById(studio.getId());
     }
-
-    @Override
-    public String uploadFile(MultipartFile file, String publicId) {
-        if(file!=null){
-            try{
-                return cloudinaryService.uploadFile(file,getDefaultFolderName(),publicId);
-            }catch (IOException e){
-                System.out.println("Problem in uploading studio picture on createStudio method");
-            }
-        }
-        return getDefaultPictureUrl();
-    }
-
-    @Override
-    public void deleteFile(String publicId){
-       try {
-           cloudinaryService.deleteFile(publicId);
-       }catch (IOException e){
-           System.out.println("Problem in uploading studio picture on createStudio method");
-       }
-    }
-
-
 }

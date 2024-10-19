@@ -15,6 +15,4 @@ public interface StudioService {
     StudioResponseDTO createStudio(StudioRequestDTO studioRequestDTO);
     StudioResponseDTO updateStudioById(StudioRequestDTO studioRequestDTO, UUID id);
     void deleteStudioById(UUID id);
-    public String uploadFile(MultipartFile file,String publicId);
-    void deleteFile(String publicId);
 }

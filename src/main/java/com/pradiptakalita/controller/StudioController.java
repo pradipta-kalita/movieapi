@@ -2,7 +2,6 @@ package com.pradiptakalita.controller;
 
 import com.pradiptakalita.dto.studio.StudioRequestDTO;
 import com.pradiptakalita.dto.studio.StudioResponseDTO;
-import com.pradiptakalita.service.director.DirectorService;
 import com.pradiptakalita.service.studio.StudioService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -42,7 +41,7 @@ public class StudioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(studioService.createStudio(studioRequestDTO));
     }
 
-    @PostMapping(value = "/{studioId}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "/{studioId}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<StudioResponseDTO> updateStudioById(@ModelAttribute @Valid StudioRequestDTO studioRequestDTO, @PathVariable UUID studioId){
         return ResponseEntity.ok().body(studioService.updateStudioById(studioRequestDTO,studioId));
     }
