@@ -2,6 +2,7 @@ package com.pradiptakalita.service.studio;
 
 import com.pradiptakalita.dto.studio.StudioRequestDTO;
 import com.pradiptakalita.dto.studio.StudioResponseDTO;
+import com.pradiptakalita.dto.studio.StudioSummaryDTO;
 import com.pradiptakalita.entity.Studio;
 import com.pradiptakalita.mapper.StudioMapper;
 import com.pradiptakalita.repository.StudioRepository;
@@ -49,6 +50,11 @@ public class StudioServiceImpl implements StudioService{
     }
 
     @Override
+    public List<StudioSummaryDTO> getStudioSummary() {
+        return studioRepository.getStudioSummary();
+    }
+
+    @Override
     public StudioResponseDTO createStudio(StudioRequestDTO studioRequestDTO) {
         Studio studio = StudioMapper.toEntity(studioRequestDTO);
         String studioPictureUrl=cloudinaryService.uploadFile(studioRequestDTO.getFile(),getDefaultFolderName(),studioRequestDTO.getPublicId(),getDefaultPictureUrl());
@@ -78,4 +84,6 @@ public class StudioServiceImpl implements StudioService{
         cloudinaryService.deleteFile(studio.getPublicId());
         studioRepository.deleteById(studio.getId());
     }
+
+
 }

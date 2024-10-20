@@ -2,6 +2,7 @@ package com.pradiptakalita.controller;
 
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
+import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.service.actor.ActorService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,11 @@ public class ActorController {
 
     public ActorController(ActorService actorService) {
         this.actorService = actorService;
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<List<ActorSummaryDTO>> getActorSummary(){
+        return ResponseEntity.ok().body(actorService.getActorSummary());
     }
 
     @GetMapping

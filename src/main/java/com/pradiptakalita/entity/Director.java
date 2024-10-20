@@ -1,6 +1,7 @@
 package com.pradiptakalita.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -44,9 +45,23 @@ public class Director {
 
     // Many-to-Many relation with Movie Entity
     @ManyToMany(mappedBy = "directors")
+    @JsonBackReference
     private Set<Movie> movies = new HashSet<>();
 
     public String getPublicId(){
         return name.toLowerCase(Locale.ROOT).strip().replace(" ","");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Director)) return false;
+        Director director = (Director) o;
+        return id != null && id.equals(director.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

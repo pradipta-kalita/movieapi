@@ -1,5 +1,7 @@
 package com.pradiptakalita.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -41,9 +43,24 @@ public class Actor {
     private String profilePictureUrl;
 
     @ManyToMany(mappedBy = "actors")
+    @JsonBackReference
+    @JsonManagedReference
     private Set<Movie> movies= new HashSet<>();
 
     public String getPublicId(){
         return name.replace(" ","").toLowerCase(Locale.ROOT).strip();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Actor)) return false;
+        Actor actor = (Actor) o;
+        return id != null && id.equals(actor.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

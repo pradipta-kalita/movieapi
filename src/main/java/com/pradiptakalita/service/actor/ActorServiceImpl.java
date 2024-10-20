@@ -2,6 +2,7 @@ package com.pradiptakalita.service.actor;
 
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
+import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.entity.Actor;
 import com.pradiptakalita.mapper.ActorMapper;
 import com.pradiptakalita.repository.ActorRepository;
@@ -46,6 +47,11 @@ public class ActorServiceImpl implements ActorService{
             result.add(ActorMapper.toResponseDTO(actor));
         }
         return result;
+    }
+
+    @Override
+    public List<ActorSummaryDTO> getActorSummary() {
+        return actorRepository.getActorSummary();
     }
 
     @Override

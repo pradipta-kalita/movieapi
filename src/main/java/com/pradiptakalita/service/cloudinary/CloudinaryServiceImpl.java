@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CloudinaryServiceImpl implements CloudinaryService {
@@ -58,6 +55,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
                 return uploadFileToCloudinary(file,folderName,publicId);
             }catch (IOException e){
                 System.out.println("Problem in uploading studio picture on createStudio method");
+                return defaultURL;
             }
         }
         return defaultURL;
@@ -71,4 +69,34 @@ public class CloudinaryServiceImpl implements CloudinaryService {
             System.out.println("Problem in uploading studio picture on createStudio method");
         }
     }
+
+    @Override
+    public String uploadMoviePoster(MultipartFile file, String folderName, String publicId, String defaultURL) {
+        if (file != null && !file.isEmpty()) {
+            try {
+                Map<String, Object> options = new HashMap<>();
+                options.put("public_id", publicId);
+                options.put("folder", folderName);
+                options.put("resource_type", "image");
+                options.put("transformation", new Transformation<>()
+                        .width(1800)
+                        .height(1200)
+                        .crop("fill")
+                        .gravity("center")
+                        .quality("auto"));
+
+                // Use InputStream for upload
+                Map uploadResult = cloudinary.uploader().upload(file.getInputStream(), options);
+                return uploadResult.get("url").toString();
+
+            } catch (IOException e) {
+                System.out.println("Problem in uploading movie poster: " + e.getMessage());
+                return defaultURL;
+            }
+        }
+        return defaultURL;
+    }
+
+
+
 }

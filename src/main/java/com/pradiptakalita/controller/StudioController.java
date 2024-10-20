@@ -2,6 +2,7 @@ package com.pradiptakalita.controller;
 
 import com.pradiptakalita.dto.studio.StudioRequestDTO;
 import com.pradiptakalita.dto.studio.StudioResponseDTO;
+import com.pradiptakalita.dto.studio.StudioSummaryDTO;
 import com.pradiptakalita.service.studio.StudioService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,11 @@ public class StudioController {
 
     public StudioController(StudioService studioService) {
         this.studioService = studioService;
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<List<StudioSummaryDTO>> getStudioSummary(){
+        return ResponseEntity.ok().body(studioService.getStudioSummary());
     }
 
     @GetMapping

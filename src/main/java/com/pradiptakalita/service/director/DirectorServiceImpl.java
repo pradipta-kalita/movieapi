@@ -8,10 +8,8 @@ import com.pradiptakalita.entity.Director;
 import com.pradiptakalita.mapper.DirectorMapper;
 import com.pradiptakalita.repository.DirectorRepository;
 import com.pradiptakalita.service.cloudinary.CloudinaryService;
-import lombok.Getter;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -82,8 +80,8 @@ public class DirectorServiceImpl implements DirectorService{
     }
 
     @Override
-    public List<DirectorSummaryDTO> getAllDirectorWithNameAndProfile() {
-       return directorRepository.findAllDirectorsNameAndProfilePicture();
+    public List<DirectorSummaryDTO> getDirectorSummary() {
+       return directorRepository.getDirectorSummary();
     }
 
     @Override

@@ -13,7 +13,7 @@ public interface DirectorService  {
     DirectorResponseDTO updateDirector(DirectorRequestDTO directorRequestDTO,UUID directorId);
     DirectorResponseDTO getDirectorById(UUID id);
     void deleteDirectorById(UUID id);
-    List<DirectorSummaryDTO> getAllDirectorWithNameAndProfile();
+    List<DirectorSummaryDTO> getDirectorSummary();
     List<DirectorResponseDTO> getAllDirectors();
 
 }
