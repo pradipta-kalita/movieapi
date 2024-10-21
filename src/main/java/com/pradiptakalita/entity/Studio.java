@@ -1,6 +1,7 @@
 package com.pradiptakalita.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -33,6 +34,7 @@ public class Studio {
     // One-to-Many relation with Movie Entity
     @OneToMany(mappedBy = "studio",cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JsonBackReference
+    @JsonIgnoreProperties("studio")
     private Set<Movie> movies = new HashSet<>();
 
     public String getPublicId(){

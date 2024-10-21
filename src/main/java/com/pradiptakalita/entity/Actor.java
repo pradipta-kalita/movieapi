@@ -1,6 +1,7 @@
 package com.pradiptakalita.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -44,7 +45,7 @@ public class Actor {
 
     @ManyToMany(mappedBy = "actors")
     @JsonBackReference
-    @JsonManagedReference
+    @JsonIgnoreProperties("directors")
     private Set<Movie> movies= new HashSet<>();
 
     public String getPublicId(){

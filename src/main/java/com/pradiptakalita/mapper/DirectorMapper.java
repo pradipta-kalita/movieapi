@@ -35,24 +35,9 @@ public class DirectorMapper {
         directorResponseDTO.setMiniBiography(director.getMiniBiography());
         directorResponseDTO.setBirthDate(director.getBirthDate());
         directorResponseDTO.setProfilePictureUrl(director.getProfilePictureUrl());
-//        Set<Movie> movies = new HashSet<>(director.getMovies());
-        
+        Set<Movie> movies = new HashSet<>(director.getMovies());
+        directorResponseDTO.setMovies(movies);
         return directorResponseDTO;
     }
-//    public List<Movie> extractMovieDetails(Director director) {
-//        if (director == null || director.getMovies() == null) {
-//            return List.of(); // Return an empty list if director or movies are null
-//        }
-//
-//        Set<Movie> movies = director.getMovies();
-//
-//        // Using stream to map movies to MovieDTO
-//        return movies.stream().map(movie -> {
-//            Movie movieDTO = new Movie();
-//            movieDTO.setMovieId(movie.getId());
-//            movieDTO.setName(movie.getName());
-//            movieDTO.setPosterUrl(movie.getPosterUrl());
-//            return movieDTO;
-//        }).collect(Collectors.toList());
-//    }
+
 }

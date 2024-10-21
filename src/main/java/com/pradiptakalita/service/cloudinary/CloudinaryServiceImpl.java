@@ -4,12 +4,14 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.*;
 
 @Service
+@Transactional
 public class CloudinaryServiceImpl implements CloudinaryService {
 
     private final Cloudinary cloudinary;
@@ -32,7 +34,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
                 .radius("max"));  // Makes the image circular
 
 
-        Map uploadResult = cloudinary.uploader().upload(file.getBytes(), options);
+        Map uploadResult = cloudinary.uploader().upload(file.getInputStream(), options);
         return uploadResult.get("url").toString();
     }
 

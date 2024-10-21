@@ -1,6 +1,7 @@
 package com.pradiptakalita.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pradiptakalita.validation.ValidReleaseYear;
 import jakarta.persistence.*;
@@ -33,28 +34,29 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "studio_id",nullable = false)
     @JsonManagedReference
+    @JsonIgnoreProperties("movies")
     private Studio studio;
 
     // Many-to-Many relation with Director Entity
-    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
             name = "director_movie",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "director_id")
     )
     @JsonManagedReference
-    @JsonBackReference
+    @JsonIgnoreProperties("movies")
     private Set<Director> directors = new HashSet<>();
 
     // Many-to-Many relation with Actor Entity
-    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
             name = "actor_movie",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
     @JsonManagedReference
-    @JsonBackReference
+    @JsonIgnoreProperties("movies")
     private Set<Actor> actors = new HashSet<>();
 
     @NotNull(message = "Please enter the release year of the movie.")

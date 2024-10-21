@@ -1,6 +1,7 @@
 package com.pradiptakalita.dto.movie;
 
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
+import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.dto.director.DirectorResponseDTO;
 import com.pradiptakalita.entity.Actor;
 import com.pradiptakalita.entity.Director;
@@ -22,5 +23,5 @@ public class MovieResponseDTO {
     private String posterUrl;
     private Studio studio;
     private Set<DirectorResponseDTO> directors=new HashSet<>();
-    private Set<ActorResponseDTO> actors = new HashSet<>();
+    private Set<ActorSummaryDTO> actors = new HashSet<>();
 }

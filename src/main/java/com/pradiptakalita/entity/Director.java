@@ -2,6 +2,7 @@ package com.pradiptakalita.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -46,6 +47,7 @@ public class Director {
     // Many-to-Many relation with Movie Entity
     @ManyToMany(mappedBy = "directors")
     @JsonBackReference
+    @JsonIgnoreProperties("directors")
     private Set<Movie> movies = new HashSet<>();
 
     public String getPublicId(){

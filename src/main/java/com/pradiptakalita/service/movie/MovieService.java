@@ -11,5 +11,5 @@ public interface MovieService {
     List<MovieResponseDTO> getAllMovies();
     MovieResponseDTO createMovie(MovieRequestDTO movieRequestDTO);
     MovieResponseDTO updateMovieById(MovieRequestDTO movieRequestDTO, UUID id);
-    void deleteMovieById(UUID id);
+    String deleteMovieById(UUID id);
 }

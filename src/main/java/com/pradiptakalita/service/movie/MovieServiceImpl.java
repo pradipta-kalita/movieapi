@@ -18,6 +18,7 @@ import com.pradiptakalita.service.cloudinary.CloudinaryService;
 import com.pradiptakalita.service.director.DirectorService;
 import com.pradiptakalita.service.studio.StudioService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -64,35 +65,50 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
+    @Transactional
     public MovieResponseDTO createMovie(MovieRequestDTO movieRequestDTO) {
         System.out.println("SERVICE");
         Movie movie = MovieMapper.toEntity(movieRequestDTO);
-        if(movieRequestDTO.getFile()==null){
+
+        if (movieRequestDTO.getFile() == null) {
             throw new RuntimeException("Movie poster is required.");
         }
-        Studio studio =studioRepository.findById(movieRequestDTO.getStudioId()).orElseThrow(()->new RuntimeException("Studio not found."));
+
+        Studio studio = studioRepository.findById(movieRequestDTO.getStudioId())
+                .orElseThrow(() -> new RuntimeException("Studio not found."));
         movie.setStudio(studio);
 
         Set<Director> directors = new HashSet<>();
-        for(UUID directorId: movieRequestDTO.getDirectorIds()){
-            Director director = directorRepository.findById(directorId).orElseThrow(()-> new RuntimeException("Director not found."));
+        for (UUID directorId : movieRequestDTO.getDirectorIds()) {
+            Director director = directorRepository.findById(directorId)
+                    .orElseThrow(() -> new RuntimeException("Director not found."));
             directors.add(director);
+            // Add the movie to the director's collection
+            director.getMovies().add(movie);
         }
         movie.setDirectors(directors);
 
         Set<Actor> actors = new HashSet<>();
-        for(UUID actorId: movieRequestDTO.getActorIds()){
-            Actor actor = actorRepository.findById(actorId).orElseThrow(()-> new RuntimeException("Actor not found."));
+        for (UUID actorId : movieRequestDTO.getActorIds()) {
+            Actor actor = actorRepository.findById(actorId)
+                    .orElseThrow(() -> new RuntimeException("Actor not found."));
             actors.add(actor);
+            // Add the movie to the actor's collection
+            actor.getMovies().add(movie);
         }
         movie.setActors(actors);
 
-        String moviePosterUrl = cloudinaryService.uploadMoviePoster(movieRequestDTO.getFile(),getDefaultFolderName(), movieRequestDTO.getPublicId(),getDefaultPictureUrl());
+        String moviePosterUrl = cloudinaryService.uploadMoviePoster(movieRequestDTO.getFile(),
+                getDefaultFolderName(), movieRequestDTO.getPublicId(), getDefaultPictureUrl());
         movie.setMoviePosterUrl(moviePosterUrl);
+
+        // Save the movie
         Movie savedMovie = movieRepository.save(movie);
 
+        // No need to save actors and directors explicitly again; cascade should handle it
         return MovieMapper.toResponseDTO(savedMovie);
     }
+
 
     @Override
     public MovieResponseDTO updateMovieById(MovieRequestDTO movieRequestDTO, UUID id) {
@@ -100,7 +116,9 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
-    public void deleteMovieById(UUID id) {
-
+    public String deleteMovieById(UUID id) {
+        Movie movie = movieRepository.findById(id).orElseThrow(()-> new RuntimeException("Movie not found."));
+        movieRepository.deleteById(id);
+        return "Movie successfully deleted.";
     }
 }

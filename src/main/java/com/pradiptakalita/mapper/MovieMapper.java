@@ -1,6 +1,7 @@
 package com.pradiptakalita.mapper;
 
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
+import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.dto.director.DirectorResponseDTO;
 import com.pradiptakalita.dto.movie.MovieRequestDTO;
 import com.pradiptakalita.dto.movie.MovieResponseDTO;
@@ -32,9 +33,9 @@ public class MovieMapper {
         }
         movieResponseDTO.setDirectors(directors);
 
-        Set<ActorResponseDTO> actors = new HashSet<>();
+        Set<ActorSummaryDTO> actors = new HashSet<>();
         for(Actor actor:movie.getActors()){
-            actors.add(ActorMapper.toResponseDTO(actor));
+            actors.add(ActorMapper.toSummaryDTO(actor));
         }
         movieResponseDTO.setActors(actors);
 

@@ -8,12 +8,14 @@ import com.pradiptakalita.mapper.ActorMapper;
 import com.pradiptakalita.repository.ActorRepository;
 import com.pradiptakalita.service.cloudinary.CloudinaryService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class ActorServiceImpl implements ActorService{
     private final ActorRepository actorRepository;
     private final CloudinaryService cloudinaryService;

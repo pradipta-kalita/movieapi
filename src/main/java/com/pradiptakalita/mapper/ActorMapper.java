@@ -2,6 +2,7 @@ package com.pradiptakalita.mapper;
 
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
+import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.entity.Actor;
 
 public class ActorMapper {
@@ -22,5 +23,14 @@ public class ActorMapper {
         actorResponseDTO.setProfilePictureUrl(actor.getProfilePictureUrl());
         actorResponseDTO.setMovies(actor.getMovies());
         return actorResponseDTO;
+    }
+
+
+    public static ActorSummaryDTO toSummaryDTO(Actor actor){
+        ActorSummaryDTO actorSummaryDTO = new ActorSummaryDTO();
+        actorSummaryDTO.setId(actor.getId());
+        actorSummaryDTO.setName(actor.getName());
+        actorSummaryDTO.setProfilePictureUrl(actor.getProfilePictureUrl());
+        return actorSummaryDTO;
     }
 }
