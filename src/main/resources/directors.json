@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Steven Spielberg",
+    "miniBiography": "An iconic filmmaker known for blockbuster movies like 'Jaws', 'E.T.', and 'Jurassic Park'.",
+    "birthDate": "1946-12-18"
+  },
+  {
+    "name": "Christopher Nolan",
+    "miniBiography": "Known for complex, non-linear storytelling in films like 'Inception', 'Interstellar', and 'The Dark Knight'.",
+    "birthDate": "1970-07-30"
+  },
+  {
+    "name": "Martin Scorsese",
+    "miniBiography": "Renowned for crime and drama films such as 'Goodfellas', 'Taxi Driver', and 'The Irishman'.",
+    "birthDate": "1942-11-17"
+  },
+  {
+    "name": "Quentin Tarantino",
+    "miniBiography": "Famous for his unique style and dialogue-heavy films like 'Pulp Fiction' and 'Kill Bill'.",
+    "birthDate": "1963-03-27"
+  },
+  {
+    "name": "James Cameron",
+    "miniBiography": "Sci-fi and action director known for 'Avatar', 'Titanic', and 'The Terminator'.",
+    "birthDate": "1954-08-16"
+  },
+  {
+    "name": "Alfred Hitchcock",
+    "miniBiography": "Master of suspense known for films like 'Psycho', 'Vertigo', and 'Rear Window'.",
+    "birthDate": "1899-08-13"
+  },
+  {
+    "name": "Stanley Kubrick",
+    "miniBiography": "Legendary director of classics like '2001: A Space Odyssey', 'The Shining', and 'A Clockwork Orange'.",
+    "birthDate": "1928-07-26"
+  },
+  {
+    "name": "Peter Jackson",
+    "miniBiography": "Known for 'The Lord of the Rings' trilogy and 'The Hobbit' series.",
+    "birthDate": "1961-10-31"
+  },
+  {
+    "name": "Francis Ford Coppola",
+    "miniBiography": "Director of 'The Godfather' series and 'Apocalypse Now'.",
+    "birthDate": "1939-04-07"
+  },
+  {
+    "name": "Ridley Scott",
+    "miniBiography": "Known for sci-fi classics like 'Alien' and 'Blade Runner', as well as 'Gladiator'.",
+    "birthDate": "1937-11-30"
+  },
+  {
+    "name": "Tim Burton",
+    "miniBiography": "Famous for his dark, gothic style in films like 'Edward Scissorhands' and 'The Nightmare Before Christmas'.",
+    "birthDate": "1958-08-25"
+  },
+  {
+    "name": "Wes Anderson",
+    "miniBiography": "Known for quirky, stylized films such as 'The Grand Budapest Hotel' and 'Fantastic Mr. Fox'.",
+    "birthDate": "1969-05-01"
+  },
+  {
+    "name": "David Fincher",
+    "miniBiography": "Known for 'Fight Club', 'Se7en', and 'The Social Network'.",
+    "birthDate": "1962-08-28"
+  },
+  {
+    "name": "Spike Lee",
+    "miniBiography": "Director known for films like 'Do the Right Thing' and 'Malcolm X'.",
+    "birthDate": "1957-03-20"
+  },
+  {
+    "name": "Clint Eastwood",
+    "miniBiography": "Actor and director of films such as 'Unforgiven' and 'Million Dollar Baby'.",
+    "birthDate": "1930-05-31"
+  },
+  {
+    "name": "Hayao Miyazaki",
+    "miniBiography": "Acclaimed Japanese animator known for 'Spirited Away' and 'My Neighbor Totoro'.",
+    "birthDate": "1941-01-05"
+  },
+  {
+    "name": "George Lucas",
+    "miniBiography": "Creator of 'Star Wars' and 'Indiana Jones' franchises.",
+    "birthDate": "1944-05-14"
+  },
+  {
+    "name": "Akira Kurosawa",
+    "miniBiography": "Japanese filmmaker behind classics like 'Seven Samurai' and 'Rashomon'.",
+    "birthDate": "1910-03-23"
+  },
+  {
+    "name": "Ang Lee",
+    "miniBiography": "Known for films like 'Life of Pi', 'Brokeback Mountain', and 'Crouching Tiger, Hidden Dragon'.",
+    "birthDate": "1954-10-23"
+  },
+  {
+    "name": "Jean-Luc Godard",
+    "miniBiography": "French director and a key figure of the French New Wave; known for 'Breathless'.",
+    "birthDate": "1930-12-03"
+  },
+  {
+    "name": "Guillermo del Toro",
+    "miniBiography": "Director of dark fantasy films like 'Pan's Labyrinth' and 'The Shape of Water'.",
+    "birthDate": "1964-10-09"
+  },
+  {
+    "name": "Sofia Coppola",
+    "miniBiography": "Known for 'Lost in Translation' and 'The Virgin Suicides'.",
+    "birthDate": "1971-05-14"
+  },
+  {
+    "name": "Paul Thomas Anderson",
+    "miniBiography": "Director of 'There Will Be Blood' and 'Magnolia'.",
+    "birthDate": "1970-06-26"
+  },
+  {
+    "name": "Greta Gerwig",
+    "miniBiography": "Actress and director known for 'Lady Bird' and 'Little Women'.",
+    "birthDate": "1983-08-04"
+  },
+  {
+    "name": "John Carpenter",
+    "miniBiography": "Horror director known for 'Halloween' and 'The Thing'.",
+    "birthDate": "1948-01-16"
+  },
+  {
+    "name": "Robert Zemeckis",
+    "miniBiography": "Known for directing 'Back to the Future' and 'Forrest Gump'.",
+    "birthDate": "1952-05-14"
+  },
+  {
+    "name": "Barry Jenkins",
+    "miniBiography": "Known for 'Moonlight' and 'If Beale Street Could Talk'.",
+    "birthDate": "1979-11-19"
+  },
+  {
+    "name": "Damien Chazelle",
+    "miniBiography": "Director of 'La La Land' and 'Whiplash'.",
+    "birthDate": "1985-01-19"
+  },
+  {
+    "name": "Jordan Peele",
+    "miniBiography": "Known for horror films like 'Get Out' and 'Us'.",
+    "birthDate": "1979-02-21"
+  },
+  {
+    "name": "Denis Villeneuve",
+    "miniBiography": "Known for 'Arrival', 'Blade Runner 2049', and 'Dune'.",
+    "birthDate": "1967-10-03"
+  }
+]

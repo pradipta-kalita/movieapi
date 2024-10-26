@@ -3,8 +3,10 @@ package com.pradiptakalita.mapper;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
 import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.dto.director.DirectorResponseDTO;
+import com.pradiptakalita.dto.director.DirectorSummaryDTO;
 import com.pradiptakalita.dto.movie.MovieRequestDTO;
 import com.pradiptakalita.dto.movie.MovieResponseDTO;
+import com.pradiptakalita.dto.movie.MovieSummaryDTO;
 import com.pradiptakalita.entity.Actor;
 import com.pradiptakalita.entity.Director;
 import com.pradiptakalita.entity.Movie;
@@ -27,9 +29,9 @@ public class MovieMapper {
         movieResponseDTO.setReleaseYear(movie.getReleaseYear());
         movieResponseDTO.setStudio(movie.getStudio());
         movieResponseDTO.setPosterUrl(movie.getMoviePosterUrl());
-        Set<DirectorResponseDTO> directors = new HashSet<>();
+        Set<DirectorSummaryDTO> directors = new HashSet<>();
         for(Director director:movie.getDirectors()){
-            directors.add(DirectorMapper.toResponseDTO(director));
+            directors.add(DirectorMapper.toDirectorSummaryDTO(director));
         }
         movieResponseDTO.setDirectors(directors);
 
@@ -40,5 +42,14 @@ public class MovieMapper {
         movieResponseDTO.setActors(actors);
 
         return movieResponseDTO;
+    }
+
+    public static MovieSummaryDTO toMovieSummaryDTO(Movie movie){
+        MovieSummaryDTO movieSummaryDTO = new MovieSummaryDTO();
+        movieSummaryDTO.setId(movie.getId());
+        movieSummaryDTO.setTitle(movie.getTitle());
+        movieSummaryDTO.setReleaseYear(movie.getReleaseYear());
+        movieSummaryDTO.setPosterUrl(movie.getMoviePosterUrl());
+        return movieSummaryDTO;
     }
 }

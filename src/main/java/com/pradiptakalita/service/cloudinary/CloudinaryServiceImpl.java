@@ -34,14 +34,14 @@ public class CloudinaryServiceImpl implements CloudinaryService {
                 .radius("max"));  // Makes the image circular
 
 
-        Map uploadResult = cloudinary.uploader().upload(file.getInputStream(), options);
+        Map uploadResult = cloudinary.uploader().upload(file.getBytes(), options);
         return uploadResult.get("url").toString();
     }
 
     @Override
-    public void deleteFileFromCloudinary(String publicId) throws IOException {
+    public void deleteFileFromCloudinary(String publicId,String folderName) throws IOException {
         // Destroy (delete) the image by its public ID
-        Map result = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+        Map result = cloudinary.uploader().destroy(folderName+"/"+publicId, ObjectUtils.emptyMap());
         System.out.println(result.get("result"));
         if ("ok".equals(result.get("result"))) {
             System.out.println("File deleted successfully");
@@ -64,9 +64,9 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     }
 
     @Override
-    public void deleteFile(String publicId){
+    public void deleteFile(String publicId,String folderName){
         try {
-            deleteFileFromCloudinary(publicId);
+            deleteFileFromCloudinary(publicId,folderName);
         }catch (IOException e){
             System.out.println("Problem in uploading studio picture on createStudio method");
         }

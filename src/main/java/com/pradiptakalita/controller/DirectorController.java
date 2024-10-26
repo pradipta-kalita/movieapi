@@ -1,10 +1,12 @@
 package com.pradiptakalita.controller;
 
+import com.pradiptakalita.dto.director.DirectorPageResponseDTO;
 import com.pradiptakalita.dto.director.DirectorRequestDTO;
 import com.pradiptakalita.dto.director.DirectorResponseDTO;
 import com.pradiptakalita.dto.director.DirectorSummaryDTO;
 import com.pradiptakalita.service.cloudinary.CloudinaryService;
 import com.pradiptakalita.service.director.DirectorService;
+import com.pradiptakalita.utils.AppConstants;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,14 +27,13 @@ public class DirectorController {
         this.cloudinaryService = cloudinaryService;
     }
 
-    @GetMapping("/summary")
-    public ResponseEntity<List<DirectorSummaryDTO>> getDirectorSummary(){
-        return ResponseEntity.ok().body(directorService.getDirectorSummary());
-    }
 
     @GetMapping
-    public ResponseEntity<List<DirectorResponseDTO>> getAllDirector(){
-        return ResponseEntity.ok().body(directorService.getAllDirectors());
+    public ResponseEntity<DirectorPageResponseDTO> getAllDirector(@RequestParam(defaultValue = AppConstants.PAGE,required = false) int page,
+                                                                  @RequestParam(defaultValue = AppConstants.SIZE,required = false) int size,
+                                                                  @RequestParam(defaultValue = AppConstants.NAME_SORT_BY,required = false) String sortBy,
+                                                                  @RequestParam(defaultValue = AppConstants.ORDER,required = false) String order){
+        return ResponseEntity.ok().body(directorService.getAllDirectors(page,size,sortBy,order));
     }
     // Create a new director
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

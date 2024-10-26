@@ -1,9 +1,11 @@
 package com.pradiptakalita.controller;
 
+import com.pradiptakalita.dto.studio.StudioPageResponseDTO;
 import com.pradiptakalita.dto.studio.StudioRequestDTO;
 import com.pradiptakalita.dto.studio.StudioResponseDTO;
 import com.pradiptakalita.dto.studio.StudioSummaryDTO;
 import com.pradiptakalita.service.studio.StudioService;
+import com.pradiptakalita.utils.AppConstants;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,15 +25,14 @@ public class StudioController {
     public StudioController(StudioService studioService) {
         this.studioService = studioService;
     }
-
-    @GetMapping("/summary")
-    public ResponseEntity<List<StudioSummaryDTO>> getStudioSummary(){
-        return ResponseEntity.ok().body(studioService.getStudioSummary());
-    }
+    
 
     @GetMapping
-    public ResponseEntity<List<StudioResponseDTO>> getAllStudios(){
-        return ResponseEntity.ok().body(studioService.getAllStudio());
+    public ResponseEntity<StudioPageResponseDTO> getAllStudios(@RequestParam(defaultValue = AppConstants.PAGE,required = false) int page,
+                                                               @RequestParam(defaultValue = AppConstants.SIZE,required = false) int size,
+                                                               @RequestParam(defaultValue = AppConstants.NAME_SORT_BY,required = false) String sortBy,
+                                                               @RequestParam(defaultValue = AppConstants.ORDER,required = false) String order){
+        return ResponseEntity.ok().body(studioService.getAllStudio(page,size,sortBy,order));
     }
 
     @GetMapping("/{studioId}")

@@ -3,7 +3,14 @@ package com.pradiptakalita.mapper;
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
 import com.pradiptakalita.dto.actor.ActorSummaryDTO;
+import com.pradiptakalita.dto.movie.MovieSummaryDTO;
 import com.pradiptakalita.entity.Actor;
+import com.pradiptakalita.entity.Movie;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ActorMapper {
     public static Actor toEntity(ActorRequestDTO actorRequestDTO){
@@ -21,7 +28,6 @@ public class ActorMapper {
         actorResponseDTO.setMiniBiography(actor.getMiniBiography());
         actorResponseDTO.setBirthDate(actor.getBirthDate());
         actorResponseDTO.setProfilePictureUrl(actor.getProfilePictureUrl());
-        actorResponseDTO.setMovies(actor.getMovies());
         return actorResponseDTO;
     }
 
@@ -31,6 +37,8 @@ public class ActorMapper {
         actorSummaryDTO.setId(actor.getId());
         actorSummaryDTO.setName(actor.getName());
         actorSummaryDTO.setProfilePictureUrl(actor.getProfilePictureUrl());
+        actorSummaryDTO.setMiniBiography(actor.getMiniBiography());
+        actorSummaryDTO.setBirthDate(actor.getBirthDate());
         return actorSummaryDTO;
     }
 }

@@ -11,6 +11,5 @@ import java.util.UUID;
 
 @Repository
 public interface DirectorRepository extends JpaRepository<Director, UUID> {
-    @Query("SELECT new com.pradiptakalita.dto.director.DirectorSummaryDTO(d.id, d.name, d.profilePictureUrl) FROM Director d")
-    List<DirectorSummaryDTO> getDirectorSummary();
+
 }

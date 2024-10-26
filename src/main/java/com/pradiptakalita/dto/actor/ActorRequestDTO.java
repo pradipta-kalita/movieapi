@@ -25,7 +25,11 @@ public class ActorRequestDTO {
 
     private MultipartFile file;
 
-    public String getPublicId(){
-        return this.name.replace(" ","").toLowerCase(Locale.ROOT).strip();
+    public String getPublicId() {
+        return this.name.replaceAll("[^a-zA-Z0-9]", "")
+                .replace(" ", "")
+                .toLowerCase(Locale.ROOT)
+                .strip();
     }
+
 }

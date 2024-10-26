@@ -37,7 +37,10 @@ public class MovieRequestDTO {
 
     private MultipartFile file;
 
-    public String getPublicId(){
-        return title.toLowerCase(Locale.ROOT).strip().replace(" ","");
+    public String getPublicId() {
+        return this.title.replaceAll("[^a-zA-Z0-9]", "")
+                .replace(" ", "")
+                .toLowerCase(Locale.ROOT)
+                .strip();
     }
 }

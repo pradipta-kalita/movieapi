@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface CloudinaryService {
     String uploadFileToCloudinary(MultipartFile file, String folderName, String fileName) throws IOException;
-    void deleteFileFromCloudinary(String publicId) throws IOException;
+    void deleteFileFromCloudinary(String publicId,String folderName) throws IOException;
     String uploadFile(MultipartFile file,String folderName, String publicId,String defaultURL);
-    void deleteFile(String publicId);
+    void deleteFile(String publicId,String folderName);
     String uploadMoviePoster(MultipartFile file, String folderName, String publicId, String defaultURL);
 }

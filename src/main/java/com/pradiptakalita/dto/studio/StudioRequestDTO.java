@@ -18,7 +18,10 @@ public class StudioRequestDTO {
 
     private MultipartFile file;
 
-    public String getPublicId(){
-        return name.toLowerCase(Locale.ROOT).strip().replace(" ","");
+    public String getPublicId() {
+        return this.name.replaceAll("[^a-zA-Z0-9]", "")
+                .replace(" ", "")
+                .toLowerCase(Locale.ROOT)
+                .strip();
     }
 }

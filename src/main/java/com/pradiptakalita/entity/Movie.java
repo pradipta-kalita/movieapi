@@ -1,8 +1,6 @@
 package com.pradiptakalita.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.pradiptakalita.validation.ValidReleaseYear;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;

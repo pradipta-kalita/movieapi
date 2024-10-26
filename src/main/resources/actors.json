@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Tom Hanks",
+    "miniBiography": "An American actor known for his versatile roles in movies like 'Forrest Gump', 'Saving Private Ryan', and 'Cast Away'. He has worked with Steven Spielberg in films such as 'Saving Private Ryan' and 'Catch Me If You Can'.",
+    "birthDate": "1956-07-09"
+  },
+  {
+    "name": "Leonardo DiCaprio",
+    "miniBiography": "An American actor recognized for his roles in 'Titanic', 'Inception', and 'The Wolf of Wall Street'. He has collaborated with both Martin Scorsese in 'The Departed' and Quentin Tarantino in 'Django Unchained' and 'Once Upon a Time in Hollywood'.",
+    "birthDate": "1974-11-11"
+  },
+  {
+    "name": "Robert De Niro",
+    "miniBiography": "A legendary actor known for iconic roles in 'Taxi Driver', 'Goodfellas', and 'The Godfather Part II'. He has had a longstanding collaboration with Martin Scorsese in films like 'Raging Bull' and 'The Irishman'.",
+    "birthDate": "1943-08-17"
+  },
+  {
+    "name": "Christian Bale",
+    "miniBiography": "An English actor known for his transformation-heavy roles in films like 'American Psycho' and 'The Machinist'. He starred as Batman in Christopher Nolan's 'The Dark Knight' trilogy.",
+    "birthDate": "1974-01-30"
+  },
+  {
+    "name": "Samuel L. Jackson",
+    "miniBiography": "Known for his distinctive voice and roles in 'Pulp Fiction', 'Django Unchained', and the Marvel Cinematic Universe. He has frequently worked with Quentin Tarantino.",
+    "birthDate": "1948-12-21"
+  },
+  {
+    "name": "Sigourney Weaver",
+    "miniBiography": "An American actress known for her role as Ellen Ripley in the 'Alien' series. She worked with James Cameron on 'Aliens' and later in 'Avatar'.",
+    "birthDate": "1949-10-08"
+  },
+  {
+    "name": "Jack Nicholson",
+    "miniBiography": "A celebrated American actor known for his roles in 'The Shining', 'One Flew Over the Cuckoo's Nest', and 'Chinatown'. He starred in Stanley Kubrick's horror classic, 'The Shining'.",
+    "birthDate": "1937-04-22"
+  },
+  {
+    "name": "Viggo Mortensen",
+    "miniBiography": "An American actor best known for his role as Aragorn in 'The Lord of the Rings' trilogy directed by Peter Jackson.",
+    "birthDate": "1958-10-20"
+  },
+  {
+    "name": "Al Pacino",
+    "miniBiography": "One of America's most acclaimed actors, known for his roles in 'The Godfather', 'Scarface', and 'Heat'. He has worked with Martin Scorsese in 'The Irishman'.",
+    "birthDate": "1940-04-25"
+  },
+  {
+    "name": "Russell Crowe",
+    "miniBiography": "An Australian actor known for his roles in 'Gladiator', 'A Beautiful Mind', and 'Les Misérables'. He starred in Ridley Scott's 'Gladiator' and 'American Gangster'.",
+    "birthDate": "1964-04-07"
+  },
+  {
+    "name": "Johnny Depp",
+    "miniBiography": "An American actor known for his eccentric roles in 'Edward Scissorhands', 'Pirates of the Caribbean', and 'Sweeney Todd'. He has frequently collaborated with Tim Burton in films like 'Edward Scissorhands' and 'Alice in Wonderland'.",
+    "birthDate": "1963-06-09"
+  },
+  {
+    "name": "Gwyneth Paltrow",
+    "miniBiography": "An American actress known for roles in 'Shakespeare in Love', 'Iron Man', and 'The Royal Tenenbaums'. She worked with Wes Anderson in 'The Royal Tenenbaums'.",
+    "birthDate": "1972-09-27"
+  },
+  {
+    "name": "Brad Pitt",
+    "miniBiography": "An American actor known for his performances in 'Fight Club', 'Seven', and 'Once Upon a Time in Hollywood'. He worked with David Fincher on 'Seven' and 'Fight Club'.",
+    "birthDate": "1963-12-18"
+  },
+  {
+    "name": "Denzel Washington",
+    "miniBiography": "An American actor known for his powerful roles in 'Training Day', 'Malcolm X', and 'Glory'. He worked with Spike Lee on 'Malcolm X' and 'Inside Man'.",
+    "birthDate": "1954-12-28"
+  },
+  {
+    "name": "Clint Eastwood",
+    "miniBiography": "An iconic American actor and director known for roles in 'The Good, the Bad and the Ugly' and 'Gran Torino'. He worked with himself as the director in many films, including 'Unforgiven' and 'Million Dollar Baby'.",
+    "birthDate": "1930-05-31"
+  },
+  {
+    "name": "Tom Cruise",
+    "miniBiography": "A high-profile American actor known for action-packed roles in 'Top Gun', 'Mission: Impossible', and 'Minority Report'. He worked with Stanley Kubrick on 'Eyes Wide Shut'.",
+    "birthDate": "1962-07-03"
+  },
+  {
+    "name": "Cate Blanchett",
+    "miniBiography": "An Australian actress known for her roles in 'The Lord of the Rings', 'Blue Jasmine', and 'The Aviator'. She starred in Peter Jackson's 'The Lord of the Rings' series.",
+    "birthDate": "1969-05-14"
+  },
+  {
+    "name": "Robin Williams",
+    "miniBiography": "An American actor known for roles in 'Good Will Hunting', 'Dead Poets Society', and 'Jumanji'. He starred in Steven Spielberg's 'Hook'.",
+    "birthDate": "1951-07-21"
+  },
+  {
+    "name": "Matt Damon",
+    "miniBiography": "An American actor known for 'Good Will Hunting', 'The Martian', and the 'Bourne' series. He starred in Steven Spielberg's 'Saving Private Ryan'.",
+    "birthDate": "1970-10-08"
+  },
+  {
+    "name": "Emma Thompson",
+    "miniBiography": "A British actress known for her roles in 'Sense and Sensibility', 'Harry Potter', and 'Love Actually'. She worked with Ang Lee on 'Sense and Sensibility'.",
+    "birthDate": "1959-04-15"
+  }
+]

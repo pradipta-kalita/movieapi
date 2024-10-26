@@ -12,6 +12,4 @@ import java.util.UUID;
 
 @Repository
 public interface ActorRepository extends JpaRepository<Actor, UUID> {
-    @Query("SELECT new com.pradiptakalita.dto.actor.ActorSummaryDTO(a.id, a.name, a.profilePictureUrl) FROM Actor a")
-    List<ActorSummaryDTO> getActorSummary();
 }

@@ -1,5 +1,6 @@
 package com.pradiptakalita.service.director;
 
+import com.pradiptakalita.dto.director.DirectorPageResponseDTO;
 import com.pradiptakalita.dto.director.DirectorRequestDTO;
 import com.pradiptakalita.dto.director.DirectorResponseDTO;
 import com.pradiptakalita.dto.director.DirectorSummaryDTO;
@@ -13,7 +14,6 @@ public interface DirectorService  {
     DirectorResponseDTO updateDirector(DirectorRequestDTO directorRequestDTO,UUID directorId);
     DirectorResponseDTO getDirectorById(UUID id);
     void deleteDirectorById(UUID id);
-    List<DirectorSummaryDTO> getDirectorSummary();
-    List<DirectorResponseDTO> getAllDirectors();
+    DirectorPageResponseDTO getAllDirectors(int page, int size, String sortBy, String order);
 
 }

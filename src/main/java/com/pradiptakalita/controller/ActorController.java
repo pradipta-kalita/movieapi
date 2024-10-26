@@ -1,9 +1,11 @@
 package com.pradiptakalita.controller;
 
+import com.pradiptakalita.dto.actor.ActorPageResponseDTO;
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
 import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.service.actor.ActorService;
+import com.pradiptakalita.utils.AppConstants;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +22,13 @@ public class ActorController {
         this.actorService = actorService;
     }
 
-    @GetMapping("/summary")
-    public ResponseEntity<List<ActorSummaryDTO>> getActorSummary(){
-        return ResponseEntity.ok().body(actorService.getActorSummary());
-    }
 
     @GetMapping
-    public ResponseEntity<List<ActorResponseDTO>> getAllActors(){
-        return ResponseEntity.ok().body(actorService.getAllActors());
+    public ResponseEntity<ActorPageResponseDTO> getAllActors(@RequestParam(defaultValue = AppConstants.PAGE,required = false) int page,
+                                                             @RequestParam(defaultValue = AppConstants.SIZE,required = false) int size,
+                                                             @RequestParam(defaultValue = AppConstants.NAME_SORT_BY,required = false) String sortBy,
+                                                             @RequestParam(defaultValue = AppConstants.ORDER,required = false) String order){
+        return ResponseEntity.ok().body(actorService.getAllActors(page,size,sortBy,order));
     }
 
     @GetMapping("/{actorId}")

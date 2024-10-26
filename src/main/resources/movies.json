@@ -1,0 +1,351 @@
+[
+  {
+    "title": "Inception",
+    "releaseYear": 2010,
+    "directors": ["Christopher Nolan"],
+    "actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page", "Tom Hardy", "Ken Watanabe"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "The Godfather",
+    "releaseYear": 1972,
+    "directors": ["Francis Ford Coppola"],
+    "actors": ["Marlon Brando", "Al Pacino", "James Caan", "Robert Duvall", "Diane Keaton"],
+    "studio": "Paramount Pictures"
+  },
+  {
+    "title": "Pulp Fiction",
+    "releaseYear": 1994,
+    "directors": ["Quentin Tarantino"],
+    "actors": ["John Travolta", "Samuel L. Jackson", "Uma Thurman", "Bruce Willis", "Harvey Keitel"],
+    "studio": "Miramax"
+  },
+  {
+    "title": "The Dark Knight",
+    "releaseYear": 2008,
+    "directors": ["Christopher Nolan"],
+    "actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Michael Caine", "Gary Oldman"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "Avatar",
+    "releaseYear": 2009,
+    "directors": ["James Cameron"],
+    "actors": ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver", "Stephen Lang", "Giovanni Ribisi"],
+    "studio": "20th Century Fox"
+  },
+  {
+    "title": "Schindler's List",
+    "releaseYear": 1993,
+    "directors": ["Steven Spielberg"],
+    "actors": ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes", "Caroline Goodall", "Embeth Davidtz"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "Fight Club",
+    "releaseYear": 1999,
+    "directors": ["David Fincher"],
+    "actors": ["Brad Pitt", "Edward Norton", "Helena Bonham Carter", "Meat Loaf", "Jared Leto"],
+    "studio": "20th Century Fox"
+  },
+  {
+    "title": "Forrest Gump",
+    "releaseYear": 1994,
+    "directors": ["Robert Zemeckis"],
+    "actors": ["Tom Hanks", "Robin Wright", "Gary Sinise", "Sally Field", "Mykelti Williamson"],
+    "studio": "Paramount Pictures"
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "releaseYear": 2001,
+    "directors": ["Peter Jackson"],
+    "actors": ["Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"],
+    "studio": "New Line Cinema"
+  },
+  {
+    "title": "The Matrix",
+    "releaseYear": 1999,
+    "directors": ["Lana Wachowski", "Lilly Wachowski"],
+    "actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving", "Joe Pantoliano"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "Gladiator",
+    "releaseYear": 2000,
+    "directors": ["Ridley Scott"],
+    "actors": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen", "Oliver Reed", "Djimon Hounsou"],
+    "studio": "DreamWorks Pictures"
+  },
+  {
+    "title": "Saving Private Ryan",
+    "releaseYear": 1998,
+    "directors": ["Steven Spielberg"],
+    "actors": ["Tom Hanks", "Matt Damon", "Tom Sizemore", "Edward Burns", "Giovanni Ribisi"],
+    "studio": "DreamWorks Pictures"
+  },
+  {
+    "title": "Jurassic Park",
+    "releaseYear": 1993,
+    "directors": ["Steven Spielberg"],
+    "actors": ["Sam Neill", "Laura Dern", "Jeff Goldblum", "Richard Attenborough", "Samuel L. Jackson"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "Titanic",
+    "releaseYear": 1997,
+    "directors": ["James Cameron"],
+    "actors": ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane", "Kathy Bates", "Frances Fisher"],
+    "studio": "20th Century Fox"
+  },
+  {
+    "title": "Goodfellas",
+    "releaseYear": 1990,
+    "directors": ["Martin Scorsese"],
+    "actors": ["Robert De Niro", "Ray Liotta", "Joe Pesci", "Lorraine Bracco", "Paul Sorvino"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "Braveheart",
+    "releaseYear": 1995,
+    "directors": ["Mel Gibson"],
+    "actors": ["Mel Gibson", "Sophie Marceau", "Patrick McGoohan", "Catherine McCormack", "Angus Macfadyen"],
+    "studio": "Paramount Pictures"
+  },
+  {
+    "title": "Back to the Future",
+    "releaseYear": 1985,
+    "directors": ["Robert Zemeckis"],
+    "actors": ["Michael J. Fox", "Christopher Lloyd", "Lea Thompson", "Crispin Glover", "Thomas F. Wilson"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "releaseYear": 1991,
+    "directors": ["Jonathan Demme"],
+    "actors": ["Jodie Foster", "Anthony Hopkins", "Scott Glenn", "Ted Levine", "Anthony Heald"],
+    "studio": "Orion Pictures"
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "releaseYear": 1994,
+    "directors": ["Frank Darabont"],
+    "actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton", "William Sadler", "Clancy Brown"],
+    "studio": "Castle Rock Entertainment"
+  },
+  {
+    "title": "The Avengers",
+    "releaseYear": 2012,
+    "directors": ["Joss Whedon"],
+    "actors": ["Robert Downey Jr.", "Chris Evans", "Scarlett Johansson", "Chris Hemsworth", "Mark Ruffalo"],
+    "studio": "Marvel Studios"
+  },{
+  "title": "The Departed",
+  "releaseYear": 2006,
+  "directors": ["Martin Scorsese"],
+  "actors": ["Leonardo DiCaprio", "Matt Damon", "Jack Nicholson", "Mark Wahlberg", "Alec Baldwin"],
+  "studio": "Warner Bros. Pictures"
+},
+  {
+    "title": "Django Unchained",
+    "releaseYear": 2012,
+    "directors": ["Quentin Tarantino"],
+    "actors": ["Jamie Foxx", "Christoph Waltz", "Leonardo DiCaprio", "Kerry Washington", "Samuel L. Jackson"],
+    "studio": "The Weinstein Company"
+  },
+  {
+    "title": "The Green Mile",
+    "releaseYear": 1999,
+    "directors": ["Frank Darabont"],
+    "actors": ["Tom Hanks", "Michael Clarke Duncan", "David Morse", "Bonnie Hunt", "James Cromwell"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "The Lion King",
+    "releaseYear": 1994,
+    "directors": ["Roger Allers", "Rob Minkoff"],
+    "actors": ["Matthew Broderick", "James Earl Jones", "Jeremy Irons", "Nathan Lane", "Whoopi Goldberg"],
+    "studio": "Walt Disney Pictures"
+  },
+  {
+    "title": "The Social Network",
+    "releaseYear": 2010,
+    "directors": ["David Fincher"],
+    "actors": ["Jesse Eisenberg", "Andrew Garfield", "Justin Timberlake", "Armie Hammer", "Rooney Mara"],
+    "studio": "Columbia Pictures"
+  },
+  {
+    "title": "Alien",
+    "releaseYear": 1979,
+    "directors": ["Ridley Scott"],
+    "actors": ["Sigourney Weaver", "Tom Skerritt", "John Hurt", "Veronica Cartwright", "Ian Holm"],
+    "studio": "20th Century Fox"
+  },
+  {
+    "title": "Rocky",
+    "releaseYear": 1976,
+    "directors": ["John G. Avildsen"],
+    "actors": ["Sylvester Stallone", "Talia Shire", "Burt Young", "Carl Weathers", "Burgess Meredith"],
+    "studio": "United Artists"
+  },
+  {
+    "title": "American Beauty",
+    "releaseYear": 1999,
+    "directors": ["Sam Mendes"],
+    "actors": ["Kevin Spacey", "Annette Bening", "Thora Birch", "Mena Suvari", "Wes Bentley"],
+    "studio": "DreamWorks Pictures"
+  },
+  {
+    "title": "The Terminator",
+    "releaseYear": 1984,
+    "directors": ["James Cameron"],
+    "actors": ["Arnold Schwarzenegger", "Linda Hamilton", "Michael Biehn", "Paul Winfield", "Lance Henriksen"],
+    "studio": "Orion Pictures"
+  },
+  {
+    "title": "Jaws",
+    "releaseYear": 1975,
+    "directors": ["Steven Spielberg"],
+    "actors": ["Roy Scheider", "Robert Shaw", "Richard Dreyfuss", "Lorraine Gary", "Murray Hamilton"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "Casablanca",
+    "releaseYear": 1942,
+    "directors": ["Michael Curtiz"],
+    "actors": ["Humphrey Bogart", "Ingrid Bergman", "Paul Henreid", "Claude Rains", "Conrad Veidt"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "Blade Runner",
+    "releaseYear": 1982,
+    "directors": ["Ridley Scott"],
+    "actors": ["Harrison Ford", "Rutger Hauer", "Sean Young", "Edward James Olmos", "Daryl Hannah"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "Star Wars: A New Hope",
+    "releaseYear": 1977,
+    "directors": ["George Lucas"],
+    "actors": ["Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"],
+    "studio": "Lucasfilm"
+  },
+  {
+    "title": "The Wizard of Oz",
+    "releaseYear": 1939,
+    "directors": ["Victor Fleming"],
+    "actors": ["Judy Garland", "Frank Morgan", "Ray Bolger", "Bert Lahr", "Jack Haley"],
+    "studio": "Metro-Goldwyn-Mayer"
+  },
+  {
+    "title": "Gone with the Wind",
+    "releaseYear": 1939,
+    "directors": ["Victor Fleming"],
+    "actors": ["Clark Gable", "Vivien Leigh", "Leslie Howard", "Olivia de Havilland", "Hattie McDaniel"],
+    "studio": "Selznick International Pictures"
+  },
+  {
+    "title": "A Beautiful Mind",
+    "releaseYear": 2001,
+    "directors": ["Ron Howard"],
+    "actors": ["Russell Crowe", "Jennifer Connelly", "Ed Harris", "Paul Bettany", "Christopher Plummer"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "The Sixth Sense",
+    "releaseYear": 1999,
+    "directors": ["M. Night Shyamalan"],
+    "actors": ["Bruce Willis", "Haley Joel Osment", "Toni Collette", "Olivia Williams", "Donnie Wahlberg"],
+    "studio": "Hollywood Pictures"
+  },
+  {
+    "title": "Slumdog Millionaire",
+    "releaseYear": 2008,
+    "directors": ["Danny Boyle"],
+    "actors": ["Dev Patel", "Freida Pinto", "Madhur Mittal", "Anil Kapoor", "Irrfan Khan"],
+    "studio": "Fox Searchlight Pictures"
+  },
+  {
+    "title": "No Country for Old Men",
+    "releaseYear": 2007,
+    "directors": ["Joel Coen", "Ethan Coen"],
+    "actors": ["Tommy Lee Jones", "Javier Bardem", "Josh Brolin", "Woody Harrelson", "Kelly Macdonald"],
+    "studio": "Paramount Vantage"
+  },
+  {
+    "title": "The Big Lebowski",
+    "releaseYear": 1998,
+    "directors": ["Joel Coen"],
+    "actors": ["Jeff Bridges", "John Goodman", "Julianne Moore", "Steve Buscemi", "Philip Seymour Hoffman"],
+    "studio": "PolyGram Filmed Entertainment"
+  },
+  {
+    "title": "The Shining",
+    "releaseYear": 1980,
+    "directors": ["Stanley Kubrick"],
+    "actors": ["Jack Nicholson", "Shelley Duvall", "Danny Lloyd", "Scatman Crothers", "Barry Nelson"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "The Truman Show",
+    "releaseYear": 1998,
+    "directors": ["Peter Weir"],
+    "actors": ["Jim Carrey", "Laura Linney", "Ed Harris", "Noah Emmerich", "Natascha McElhone"],
+    "studio": "Paramount Pictures"
+  },
+  {
+    "title": "The Bourne Identity",
+    "releaseYear": 2002,
+    "directors": ["Doug Liman"],
+    "actors": ["Matt Damon", "Franka Potente", "Chris Cooper", "Clive Owen", "Brian Cox"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "The Notebook",
+    "releaseYear": 2004,
+    "directors": ["Nick Cassavetes"],
+    "actors": ["Ryan Gosling", "Rachel McAdams", "James Garner", "Gena Rowlands", "Sam Shepard"],
+    "studio": "New Line Cinema"
+  },
+  {
+    "title": "The Prestige",
+    "releaseYear": 2006,
+    "directors": ["Christopher Nolan"],
+    "actors": ["Christian Bale", "Hugh Jackman", "Scarlett Johansson", "Michael Caine", "Rebecca Hall"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "The Hunt for Red October",
+    "releaseYear": 1990,
+    "directors": ["John McTiernan"],
+    "actors": ["Sean Connery", "Alec Baldwin", "Scott Glenn", "Sam Neill", "James Earl Jones"],
+    "studio": "Paramount Pictures"
+  },
+  {
+    "title": "Scarface",
+    "releaseYear": 1983,
+    "directors": ["Brian De Palma"],
+    "actors": ["Al Pacino", "Steven Bauer", "Michelle Pfeiffer", "Mary Elizabeth Mastrantonio", "Robert Loggia"],
+    "studio": "Universal Pictures"
+  },
+  {
+    "title": "Heat",
+    "releaseYear": 1995,
+    "directors": ["Michael Mann"],
+    "actors": ["Al Pacino", "Robert De Niro", "Val Kilmer", "Jon Voight", "Tom Sizemore"],
+    "studio": "Warner Bros. Pictures"
+  },
+  {
+    "title": "La La Land",
+    "releaseYear": 2016,
+    "directors": ["Damien Chazelle"],
+    "actors": ["Ryan Gosling", "Emma Stone", "John Legend", "Rosemarie DeWitt", "J.K. Simmons"],
+    "studio": "Lionsgate"
+  },
+  {
+    "title": "Whiplash",
+    "releaseYear": 2014,
+    "directors": ["Damien Chazelle"],
+    "actors": ["Miles Teller", "J.K. Simmons", "Paul Reiser", "Melissa Benoist", "Austin Stowell"],
+    "studio": "Sony Pictures Classics"
+  }
+]

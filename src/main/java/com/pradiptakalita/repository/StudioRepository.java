@@ -11,6 +11,4 @@ import java.util.UUID;
 
 @Repository
 public interface StudioRepository extends JpaRepository<Studio, UUID> {
-    @Query("SELECT new com.pradiptakalita.dto.studio.StudioSummaryDTO(s.id, s.name, s.studioProfileUrl) FROM Studio s")
-    List<StudioSummaryDTO> getStudioSummary();
 }

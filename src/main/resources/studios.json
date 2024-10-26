@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Warner Bros. Pictures",
+    "description": "One of the 'Big Five' American film studios, known for franchises like Harry Potter, DC Universe, and The Matrix."
+  },
+  {
+    "name": "Universal Pictures",
+    "description": "Founded in 1912, Universal is one of the oldest film studios in the US, known for Jurassic Park, Fast & Furious, and classic monster films."
+  },
+  {
+    "name": "Paramount Pictures",
+    "description": "The second oldest American film studio, famous for franchises like Mission Impossible, Star Trek, and Transformers."
+  },
+  {
+    "name": "Walt Disney Pictures",
+    "description": "Known for family-friendly movies and animated classics, Disney owns Pixar, Marvel Studios, and Lucasfilm."
+  },
+  {
+    "name": "20th Century Studios",
+    "description": "Originally 20th Century Fox, now owned by Disney, it's known for movies like Avatar, Alien, and X-Men."
+  },
+  {
+    "name": "Columbia Pictures",
+    "description": "A major studio owned by Sony, Columbia is known for franchises like Spider-Man, Men in Black, and Ghostbusters."
+  },
+  {
+    "name": "Sony Pictures Animation",
+    "description": "A division of Sony Pictures, focused on animated movies like Hotel Transylvania, Spider-Man: Into the Spider-Verse, and The Emoji Movie."
+  },
+  {
+    "name": "Lionsgate Films",
+    "description": "An American film studio known for blockbuster franchises like The Hunger Games, Twilight, and John Wick."
+  },
+  {
+    "name": "MGM Studios",
+    "description": "Founded in 1924, MGM is known for the James Bond series, Rocky, and classic musicals like The Wizard of Oz."
+  },
+  {
+    "name": "DreamWorks Pictures",
+    "description": "Founded by Steven Spielberg, Jeffrey Katzenberg, and David Geffen, known for live-action films and animation under DreamWorks Animation."
+  },
+  {
+    "name": "New Line Cinema",
+    "description": "Originally an independent studio, now a Warner Bros. subsidiary, known for The Lord of the Rings and A Nightmare on Elm Street."
+  },
+  {
+    "name": "Focus Features",
+    "description": "A subsidiary of Universal Pictures, Focus Features is known for art-house and independent films like Brokeback Mountain and Moonrise Kingdom."
+  },
+  {
+    "name": "A24",
+    "description": "An independent film studio known for critically acclaimed films like Hereditary, Moonlight, and Lady Bird."
+  },
+  {
+    "name": "TriStar Pictures",
+    "description": "A subsidiary of Sony Pictures, known for movies like Jumanji (1995), The Mask of Zorro, and Baby Driver."
+  },
+  {
+    "name": "Marvel Studios",
+    "description": "A subsidiary of Disney, known for producing the Marvel Cinematic Universe (MCU) with characters like Iron Man, Thor, and Captain America."
+  }
+]

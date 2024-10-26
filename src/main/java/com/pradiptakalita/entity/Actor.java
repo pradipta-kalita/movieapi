@@ -1,8 +1,6 @@
 package com.pradiptakalita.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -48,8 +46,12 @@ public class Actor {
     @JsonIgnoreProperties("directors")
     private Set<Movie> movies= new HashSet<>();
 
-    public String getPublicId(){
-        return name.replace(" ","").toLowerCase(Locale.ROOT).strip();
+    @JsonIgnore
+    public String getPublicId() {
+        return this.name.replaceAll("[^a-zA-Z0-9]", "")
+                .replace(" ", "")
+                .toLowerCase(Locale.ROOT)
+                .strip();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.pradiptakalita.service.studio;
 
 
+import com.pradiptakalita.dto.studio.StudioPageResponseDTO;
 import com.pradiptakalita.dto.studio.StudioRequestDTO;
 import com.pradiptakalita.dto.studio.StudioResponseDTO;
 import com.pradiptakalita.dto.studio.StudioSummaryDTO;
@@ -12,8 +13,7 @@ import java.util.UUID;
 
 public interface StudioService {
     StudioResponseDTO getStudioById(UUID id);
-    List<StudioResponseDTO> getAllStudio();
-    List<StudioSummaryDTO> getStudioSummary();
+    StudioPageResponseDTO getAllStudio(int page, int size, String sortBy, String order);
     StudioResponseDTO createStudio(StudioRequestDTO studioRequestDTO);
     StudioResponseDTO updateStudioById(StudioRequestDTO studioRequestDTO, UUID id);
     void deleteStudioById(UUID id);
