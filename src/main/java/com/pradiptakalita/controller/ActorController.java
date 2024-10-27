@@ -8,6 +8,7 @@ import com.pradiptakalita.service.actor.ActorService;
 import com.pradiptakalita.utils.AppConstants;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class ActorController {
     }
 
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public ResponseEntity<ActorPageResponseDTO> getAllActors(@RequestParam(defaultValue = AppConstants.PAGE,required = false) int page,
                                                              @RequestParam(defaultValue = AppConstants.SIZE,required = false) int size,
@@ -36,16 +38,19 @@ public class ActorController {
         return ResponseEntity.ok().body(actorService.getActorById(actorId));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ActorResponseDTO> createActor(@ModelAttribute ActorRequestDTO actorRequestDTO){
         return ResponseEntity.ok().body(actorService.createActor(actorRequestDTO));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,value = "/{actorId}")
     public ResponseEntity<ActorResponseDTO> updateActorById(@ModelAttribute ActorRequestDTO actorRequestDTO,@PathVariable UUID actorId){
         return ResponseEntity.ok().body(actorService.updateActorById(actorRequestDTO,actorId));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{actorId}")
     public ResponseEntity<String> deleteActorById(@PathVariable UUID actorId){
         actorService.deleteActorById(actorId);

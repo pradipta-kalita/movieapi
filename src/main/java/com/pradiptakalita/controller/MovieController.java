@@ -8,6 +8,7 @@ import com.pradiptakalita.service.movie.MovieService;
 import com.pradiptakalita.utils.AppConstants;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,11 +37,13 @@ public class MovieController {
         return ResponseEntity.ok().body(movieService.getAllMovies(page,size,sortBy,order));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<MovieResponseDTO> createMovie(@ModelAttribute MovieRequestDTO movieRequestDTO){
         return ResponseEntity.ok().body(movieService.createMovie(movieRequestDTO));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteMovieById(@PathVariable UUID id){
         return ResponseEntity.ok().body( movieService.deleteMovieById(id));

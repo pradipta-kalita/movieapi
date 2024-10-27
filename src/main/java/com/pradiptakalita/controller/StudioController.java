@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class StudioController {
         return ResponseEntity.ok().body(studioService.getStudioById(studioId));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<StudioResponseDTO> createStudio(@ModelAttribute @Valid StudioRequestDTO studioRequestDTO){
         if(studioRequestDTO.getFile()==null || studioRequestDTO.getFile().isEmpty()){
@@ -48,11 +50,13 @@ public class StudioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(studioService.createStudio(studioRequestDTO));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping(value = "/{studioId}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<StudioResponseDTO> updateStudioById(@ModelAttribute @Valid StudioRequestDTO studioRequestDTO, @PathVariable UUID studioId){
         return ResponseEntity.ok().body(studioService.updateStudioById(studioRequestDTO,studioId));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{studioId}")
     public ResponseEntity<?> deleteStudioById(@PathVariable UUID studioId){
         studioService.deleteStudioById(studioId);

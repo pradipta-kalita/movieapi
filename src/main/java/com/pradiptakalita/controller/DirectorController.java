@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,13 +36,15 @@ public class DirectorController {
                                                                   @RequestParam(defaultValue = AppConstants.ORDER,required = false) String order){
         return ResponseEntity.ok().body(directorService.getAllDirectors(page,size,sortBy,order));
     }
-    // Create a new director
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<DirectorResponseDTO> createDirector(@ModelAttribute @Valid DirectorRequestDTO directorRequestDTO){
             DirectorResponseDTO createdDirector = directorService.createDirector(directorRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdDirector);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping(value = "/{directorId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<DirectorResponseDTO> updateDirector(@ModelAttribute @Valid DirectorRequestDTO directorRequestDTO, @PathVariable UUID directorId){
         DirectorResponseDTO directorResponseDTO = directorService.updateDirector(directorRequestDTO,directorId);
@@ -53,6 +56,7 @@ public class DirectorController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(directorService.getDirectorById(id));
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{directorId}")
     public ResponseEntity<String> deleteDirectorById(@PathVariable UUID directorId){
         directorService.deleteDirectorById(directorId);
