@@ -3,7 +3,6 @@ package com.pradiptakalita.controller;
 import com.pradiptakalita.dto.actor.ActorPageResponseDTO;
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
-import com.pradiptakalita.dto.actor.ActorSummaryDTO;
 import com.pradiptakalita.service.actor.ActorService;
 import com.pradiptakalita.utils.AppConstants;
 import org.springframework.http.MediaType;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController

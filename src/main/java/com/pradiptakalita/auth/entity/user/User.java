@@ -1,6 +1,7 @@
 package com.pradiptakalita.auth.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pradiptakalita.auth.entity.ForgotPassword;
 import com.pradiptakalita.auth.entity.RefreshToken;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -59,6 +60,9 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     private RefreshToken refreshToken;
+
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private ForgotPassword forgotPassword;
 
 
     @Override
