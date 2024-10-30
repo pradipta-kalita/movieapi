@@ -10,6 +10,7 @@ import com.pradiptakalita.auth.repository.UserRepository;
 import com.pradiptakalita.auth.service.JwtService;
 import com.pradiptakalita.auth.service.RefreshTokenService;
 import com.pradiptakalita.service.resend.ResendService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,9 @@ public class EmailServiceImpl implements EmailService{
         this.refreshTokenService = refreshTokenService;
     }
 
+    @Value("${security.forgotPassword.expiration}")
+    private long forgotPasswordExpiration;
+
     @Override
     public String verifyEmailAndSendOTP(EmailRequestDTO emailRequestDTO) {
         User user = userRepository.findByEmail(emailRequestDTO.getEmail()).orElseThrow(()->
@@ -43,7 +47,7 @@ public class EmailServiceImpl implements EmailService{
         Integer otp = otpGenerator();
         ForgotPassword forgotPasswordObj = ForgotPassword.builder()
                 .otp(otp)
-                .expirationTime(new Date((System.currentTimeMillis()+100*1000)))
+                .expirationTime(new Date((System.currentTimeMillis()+forgotPasswordExpiration)))
                 .user(user)
                 .build();
 

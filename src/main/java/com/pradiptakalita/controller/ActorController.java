@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
@@ -21,8 +22,6 @@ public class ActorController {
         this.actorService = actorService;
     }
 
-
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public ResponseEntity<ActorPageResponseDTO> getAllActors(@RequestParam(defaultValue = AppConstants.PAGE,required = false) int page,
                                                              @RequestParam(defaultValue = AppConstants.SIZE,required = false) int size,
@@ -43,10 +42,11 @@ public class ActorController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,value = "/{actorId}")
-    public ResponseEntity<ActorResponseDTO> updateActorById(@ModelAttribute ActorRequestDTO actorRequestDTO,@PathVariable UUID actorId){
-        return ResponseEntity.ok().body(actorService.updateActorById(actorRequestDTO,actorId));
+    @PutMapping(value = "/{actorId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ActorResponseDTO> updateActorById(@ModelAttribute ActorRequestDTO actorRequestDTO, @PathVariable UUID actorId) {
+        return ResponseEntity.ok().body(actorService.updateActorById(actorRequestDTO, actorId));
     }
+
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{actorId}")

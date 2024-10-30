@@ -21,11 +21,9 @@ import java.util.UUID;
 @RequestMapping("/api/v1/directors")
 public class DirectorController {
     private final DirectorService directorService;
-    private final CloudinaryService cloudinaryService;
 
-    public DirectorController(DirectorService directorService, CloudinaryService cloudinaryService) {
+    public DirectorController(DirectorService directorService) {
         this.directorService = directorService;
-        this.cloudinaryService = cloudinaryService;
     }
 
 
@@ -50,6 +48,8 @@ public class DirectorController {
         DirectorResponseDTO directorResponseDTO = directorService.updateDirector(directorRequestDTO,directorId);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(directorResponseDTO);
     }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<DirectorResponseDTO> getDirectorById(@PathVariable UUID id){

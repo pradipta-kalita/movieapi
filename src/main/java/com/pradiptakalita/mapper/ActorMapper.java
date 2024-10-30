@@ -3,14 +3,14 @@ package com.pradiptakalita.mapper;
 import com.pradiptakalita.dto.actor.ActorRequestDTO;
 import com.pradiptakalita.dto.actor.ActorResponseDTO;
 import com.pradiptakalita.dto.actor.ActorSummaryDTO;
+import com.pradiptakalita.dto.movie.MovieResponseDTO;
 import com.pradiptakalita.dto.movie.MovieSummaryDTO;
 import com.pradiptakalita.entity.Actor;
 import com.pradiptakalita.entity.Movie;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
 
 public class ActorMapper {
     public static Actor toEntity(ActorRequestDTO actorRequestDTO){
@@ -26,8 +26,13 @@ public class ActorMapper {
         actorResponseDTO.setId(actor.getId());
         actorResponseDTO.setName(actor.getName());
         actorResponseDTO.setMiniBiography(actor.getMiniBiography());
-        actorResponseDTO.setBirthDate(actor.getBirthDate());
+        actorResponseDTO.setBirthDate(actor.getBirthDate().toString());
         actorResponseDTO.setProfilePictureUrl(actor.getProfilePictureUrl());
+        Set<MovieSummaryDTO> movies = new HashSet<>();
+        for(Movie movie: actor.getMovies()){
+            movies.add(MovieMapper.toMovieSummaryDTO(movie));
+        }
+        actorResponseDTO.setMovies(movies);
         return actorResponseDTO;
     }
 
@@ -38,7 +43,7 @@ public class ActorMapper {
         actorSummaryDTO.setName(actor.getName());
         actorSummaryDTO.setProfilePictureUrl(actor.getProfilePictureUrl());
         actorSummaryDTO.setMiniBiography(actor.getMiniBiography());
-        actorSummaryDTO.setBirthDate(actor.getBirthDate());
+        actorSummaryDTO.setBirthDate(actor.getBirthDate().toString());
         return actorSummaryDTO;
     }
 }

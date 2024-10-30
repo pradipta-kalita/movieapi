@@ -40,7 +40,7 @@ public class AuthService {
                 .build();
         try {
             User savedUser = userRepository.save(user);
-            resendService.sendWelcomeEmail(savedUser.getEmail(),"WELCOME "+savedUser.getFirstName()+" "+savedUser.getLastName(),registerRequestDTO.getUsername());
+//            resendService.sendWelcomeEmail(savedUser.getEmail(),"WELCOME "+savedUser.getFirstName()+" "+savedUser.getLastName(),registerRequestDTO.getUsername());
             var accessToken = jwtService.generateToken(savedUser);
             var refreshToken = refreshTokenService.createRefreshToken(savedUser.getEmail());
             return AuthResponseDTO.builder()

@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DirectorPageResponseDTO {
-    private List<DirectorSummaryDTO> directors;
+    private List<DirectorResponseDTO> directors;
     private long totalElements;
     private int totalPages;
     private int currentPage;

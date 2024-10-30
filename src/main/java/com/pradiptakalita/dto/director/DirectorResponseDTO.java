@@ -1,5 +1,6 @@
 package com.pradiptakalita.dto.director;
 
+import com.pradiptakalita.dto.movie.MovieSummaryDTO;
 import com.pradiptakalita.entity.Movie;
 import lombok.Data;
 
@@ -13,7 +14,7 @@ public class DirectorResponseDTO {
     private UUID id;
     private String name;
     private String miniBiography;
-    private LocalDate birthDate;
+    private String birthDate;
     private String profilePictureUrl;
-    private Set<Movie> movies = new HashSet<>();
+    private Set<MovieSummaryDTO> movies = new HashSet<>();
 }

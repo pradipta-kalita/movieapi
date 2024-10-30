@@ -14,6 +14,8 @@ import com.pradiptakalita.repository.DirectorRepository;
 import com.pradiptakalita.repository.MovieRepository;
 import com.pradiptakalita.repository.StudioRepository;
 import com.pradiptakalita.service.cloudinary.CloudinaryService;
+import com.pradiptakalita.service.redisCache.RedisCacheService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -31,24 +33,35 @@ public class MovieServiceImpl implements MovieService{
     private final StudioRepository studioRepository;
     private final ActorRepository actorRepository;
     private final DirectorRepository directorRepository;
+    private final RedisCacheService redisCacheService;
 
     public MovieServiceImpl(MovieRepository movieRepository,
                             CloudinaryService cloudinaryService,
                             StudioRepository studioRepository,
                             ActorRepository actorRepository,
-                            DirectorRepository directorRepository) {
+                            DirectorRepository directorRepository, RedisCacheService redisCacheService) {
         this.movieRepository = movieRepository;
         this.cloudinaryService = cloudinaryService;
         this.studioRepository = studioRepository;
         this.actorRepository = actorRepository;
         this.directorRepository = directorRepository;
+        this.redisCacheService = redisCacheService;
     }
 
-    private final String DIRECTOR_POSTER_URL = "https://res.cloudinary.com/dfths157i/image/upload/v1729199808/directors/default_pfp.jpg";
-    private final String FOLDER_NAME = "movies";
+    @Value("${cloudinary.default-poster-url}")
+    private String MOVIE_PROFILE_PICTURE_URL ;
+
+    @Value("${cloudinary.folder-names.movies}")
+    private String FOLDER_NAME ;
+
+    @Value("${redis.keys.movies.movie-cache-key}")
+    private  String MOVIE_CACHE_KEY ;
+
+    @Value("${redis.keys.movies.all-movie-cache-key}")
+    private  String ALL_MOVIE_CACHE_KEY ;
 
     private String getDefaultPictureUrl(){
-        return DIRECTOR_POSTER_URL;
+        return MOVIE_PROFILE_PICTURE_URL;
     }
     private String getDefaultFolderName(){
         return FOLDER_NAME;
@@ -56,11 +69,24 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public MovieResponseDTO getMovieById(UUID id) {
-        return MovieMapper.toResponseDTO(movieRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Movie not found with id : "+id)));
+        MovieResponseDTO cachedResult = (MovieResponseDTO) redisCacheService.getCache(MOVIE_CACHE_KEY+id);
+        if(cachedResult!=null){
+            System.out.println("RETURNED CACHED DATA");
+            return cachedResult;
+        }
+        Movie movie = movieRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Movie not found with id : "+id));
+        MovieResponseDTO result = MovieMapper.toResponseDTO(movie);
+        redisCacheService.saveToCache(MOVIE_CACHE_KEY+id,result);
+        return result;
     }
 
     @Override
     public MoviePageResponseDTO getAllMovies(int page, int size, String sortBy,String order) {
+        MoviePageResponseDTO cachedResult = (MoviePageResponseDTO)redisCacheService.getCache(ALL_MOVIE_CACHE_KEY+page+"::"+size+"::"+sortBy+"::"+order);
+        if(cachedResult!=null){
+            System.out.println("RETURNED CACHED RESULT");
+            return cachedResult;
+        }
         String[] sortFields = sortBy.split(",");
         Sort sort = Sort.by(order.equalsIgnoreCase("asc") ? Sort.Order.asc(sortFields[0]) : Sort.Order.desc(sortFields[0]));
         for (int i = 1; i < sortFields.length; i++) {
@@ -69,7 +95,7 @@ public class MovieServiceImpl implements MovieService{
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<Movie> moviePage = movieRepository.findAll(pageable);
         List<MovieResponseDTO> movieResponseDTOS= moviePage.getContent().stream().map(MovieMapper::toResponseDTO).toList();
-        return new MoviePageResponseDTO(
+        MoviePageResponseDTO result = new MoviePageResponseDTO(
                 movieResponseDTOS,
                 moviePage.getTotalElements(),
                 moviePage.getTotalPages(),
@@ -78,6 +104,8 @@ public class MovieServiceImpl implements MovieService{
                 moviePage.hasNext(),
                 moviePage.hasPrevious()
         );
+        redisCacheService.saveToCache(ALL_MOVIE_CACHE_KEY+page+"::"+size+"::"+sortBy+"::"+order,result);
+        return result;
     }
 
     @Override
@@ -118,8 +146,9 @@ public class MovieServiceImpl implements MovieService{
         movie.setMoviePosterUrl(moviePosterUrl);
 
         Movie savedMovie = movieRepository.save(movie);
-
-        return MovieMapper.toResponseDTO(savedMovie);
+        MovieResponseDTO result = MovieMapper.toResponseDTO(savedMovie);
+        redisCacheService.saveToCache(MOVIE_CACHE_KEY+result.getId(),result);
+        return result;
     }
 
 
@@ -158,13 +187,16 @@ public class MovieServiceImpl implements MovieService{
             movie.setMoviePosterUrl(moviePosterUrl);
         }
         Movie updatedMovie = movieRepository.save(movie);
-        return MovieMapper.toResponseDTO(updatedMovie);
+        MovieResponseDTO result = MovieMapper.toResponseDTO(updatedMovie);
+        redisCacheService.saveToCache(MOVIE_CACHE_KEY+result.getId(),result);
+        return result;
     }
 
     @Override
     public String deleteMovieById(UUID id) {
         Movie movie = movieRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Movie not found with id : "+id));
         movieRepository.deleteById(id);
+        redisCacheService.deleteCache();
         return "Movie successfully deleted.";
     }
 }

@@ -1,5 +1,6 @@
 package com.pradiptakalita.dto.studio;
 
+import com.pradiptakalita.dto.movie.MovieSummaryDTO;
 import com.pradiptakalita.entity.Movie;
 import lombok.Data;
 
@@ -13,5 +14,5 @@ public class StudioResponseDTO {
     private String name;
     private String description;
     private String studioProfileUrl;
-    private Set<Movie> movies = new HashSet<>();
+    private Set<MovieSummaryDTO> movies = new HashSet<>();
 }

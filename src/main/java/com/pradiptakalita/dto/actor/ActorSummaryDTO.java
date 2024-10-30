@@ -15,5 +15,5 @@ public class ActorSummaryDTO {
     private String name;
     private String profilePictureUrl;
     private String miniBiography;
-    private LocalDate birthDate;
+    private String birthDate;
 }

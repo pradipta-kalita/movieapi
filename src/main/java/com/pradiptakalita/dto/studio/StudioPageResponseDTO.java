@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudioPageResponseDTO {
-    private List<StudioSummaryDTO> studios;
+    private List<StudioResponseDTO> studios;
     private long totalElements;
     private int totalPages;
     private int currentPage;

@@ -1,6 +1,7 @@
 package com.pradiptakalita.service.director;
 
 
+import com.pradiptakalita.dto.actor.ActorPageResponseDTO;
 import com.pradiptakalita.dto.director.DirectorPageResponseDTO;
 import com.pradiptakalita.dto.director.DirectorRequestDTO;
 import com.pradiptakalita.dto.director.DirectorResponseDTO;
@@ -10,6 +11,8 @@ import com.pradiptakalita.exceptions.EntityNotFoundException;
 import com.pradiptakalita.mapper.DirectorMapper;
 import com.pradiptakalita.repository.DirectorRepository;
 import com.pradiptakalita.service.cloudinary.CloudinaryService;
+import com.pradiptakalita.service.redisCache.RedisCacheService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,9 +31,25 @@ public class DirectorServiceImpl implements DirectorService{
 
     private final DirectorRepository directorRepository;
     private final CloudinaryService cloudinaryService;
+    private final RedisCacheService redisCacheService;
 
-    private final String DIRECTOR_PROFILE_PICTURE_URL = "https://res.cloudinary.com/dfths157i/image/upload/v1729850832/directors/default_picture.png";
-    private final String FOLDER_NAME = "directors";
+    public DirectorServiceImpl(DirectorRepository directorRepository, CloudinaryService cloudinaryService, RedisCacheService redisCacheService) {
+        this.directorRepository = directorRepository;
+        this.cloudinaryService = cloudinaryService;
+        this.redisCacheService = redisCacheService;
+    }
+
+    @Value("${cloudinary.default-profile-url}")
+    private String DIRECTOR_PROFILE_PICTURE_URL ;
+
+    @Value("${cloudinary.folder-names.directors}")
+    private String FOLDER_NAME ;
+
+    @Value("${redis.keys.directors.director-cache-key}")
+    private  String DIRECTOR_CACHE_KEY ;
+
+    @Value("${redis.keys.directors.all-director-cache-key}")
+    private  String ALL_DIRECTOR_CACHE_KEY ;
 
     private String getDefaultPictureUrl(){
         return DIRECTOR_PROFILE_PICTURE_URL;
@@ -39,22 +58,20 @@ public class DirectorServiceImpl implements DirectorService{
         return FOLDER_NAME;
     }
 
-    public DirectorServiceImpl(DirectorRepository directorRepository, CloudinaryService cloudinaryService) {
-        this.directorRepository = directorRepository;
-        this.cloudinaryService = cloudinaryService;
-    }
-
     @Override
     public DirectorResponseDTO createDirector(DirectorRequestDTO directorRequestDTO) {
         String profilePictureUrl = cloudinaryService.uploadFile(directorRequestDTO.getFile(),getDefaultFolderName(),directorRequestDTO.getPublicId(),getDefaultPictureUrl());
         Director director = DirectorMapper.toEntity(directorRequestDTO);
         director.setProfilePictureUrl(profilePictureUrl);
         Director savedDirector = directorRepository.save(director);
-        return DirectorMapper.toResponseDTO(savedDirector);
+        DirectorResponseDTO result = DirectorMapper.toResponseDTO(savedDirector);
+        redisCacheService.saveToCache(DIRECTOR_CACHE_KEY+result.getId(),result);
+        return result;
     }
 
     @Override
     public DirectorResponseDTO updateDirector(DirectorRequestDTO directorRequestDTO,UUID directorId) {
+
         Optional<Director> optionalDirector = directorRepository.findById(directorId);
         if(optionalDirector.isPresent()){
             Director director = optionalDirector.get();
@@ -67,7 +84,9 @@ public class DirectorServiceImpl implements DirectorService{
                 director.setProfilePictureUrl(newProfilePictureUrl);
             }
             Director savedDirector = directorRepository.save(director);
-            return DirectorMapper.toResponseDTO(savedDirector);
+            DirectorResponseDTO result = DirectorMapper.toResponseDTO(savedDirector);
+            redisCacheService.saveToCache(DIRECTOR_CACHE_KEY+directorId,result);
+            return result;
         }else{
             throw new EntityNotFoundException("Director not found with id :"+directorId);
         }
@@ -76,8 +95,14 @@ public class DirectorServiceImpl implements DirectorService{
 
     @Override
     public DirectorResponseDTO getDirectorById(UUID id) {
+        DirectorResponseDTO cachedResult = (DirectorResponseDTO) redisCacheService.getCache(DIRECTOR_CACHE_KEY+id);
+        if(cachedResult!=null){
+            return cachedResult;
+        }
         Director director = directorRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Director not found with id :"+id));
-        return DirectorMapper.toResponseDTO(director);
+        DirectorResponseDTO result = DirectorMapper.toResponseDTO(director);
+        redisCacheService.saveToCache(DIRECTOR_CACHE_KEY+id,result);
+        return result;
     }
 
     @Override
@@ -85,12 +110,18 @@ public class DirectorServiceImpl implements DirectorService{
         Director director = directorRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Director not found with id :"+id));
         cloudinaryService.deleteFile(director.getPublicId(),getDefaultFolderName());
         directorRepository.deleteById(director.getId());
+        redisCacheService.deleteCache();
     }
 
 
 
     @Override
     public DirectorPageResponseDTO getAllDirectors(int page, int size, String sortBy, String order) {
+        DirectorPageResponseDTO cachedResult =(DirectorPageResponseDTO) redisCacheService.getCache(ALL_DIRECTOR_CACHE_KEY+page+"::"+size+"::"+sortBy+"::"+order);
+        if (cachedResult!=null){
+            System.out.println("SENDING CACHED RESULT");
+            return cachedResult;
+        }
         String[] sortFields = sortBy.split(",");
         Sort sort = Sort.by(order.equalsIgnoreCase("asc") ? Sort.Order.asc(sortFields[0]) : Sort.Order.desc(sortFields[0]));
         for (int i = 1; i < sortFields.length; i++) {
@@ -98,9 +129,9 @@ public class DirectorServiceImpl implements DirectorService{
         }
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<Director> directorPage = directorRepository.findAll(pageable);
-        List<DirectorSummaryDTO> directorSummaryDTOS = directorPage.getContent().stream().map(DirectorMapper::toDirectorSummaryDTO).toList();
-        return new DirectorPageResponseDTO(
-                directorSummaryDTOS,
+        List<DirectorResponseDTO> directorResponseDTOS = directorPage.getContent().stream().map(DirectorMapper::toResponseDTO).toList();
+        DirectorPageResponseDTO result = new DirectorPageResponseDTO(
+                directorResponseDTOS,
                 directorPage.getTotalElements(),
                 directorPage.getTotalPages(),
                 directorPage.getNumber(),
@@ -108,5 +139,7 @@ public class DirectorServiceImpl implements DirectorService{
                 directorPage.hasNext(),
                 directorPage.hasPrevious()
         );
+        redisCacheService.saveToCache(ALL_DIRECTOR_CACHE_KEY+page+"::"+size+"::"+sortBy+"::"+order,result);
+        return result;
     }
 }
